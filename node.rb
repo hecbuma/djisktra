@@ -1,5 +1,5 @@
 class Node
-  attr_accessor :name
+  attr_accessor :name, :neighbors
 
   def initialize(name)
     @name = name
@@ -8,6 +8,10 @@ class Node
 
   def add_neighbor(neighbor)
     @neighbors << neighbor
+  end
+
+  def list_neighbors
+    @neighbors.map(&:name)
   end
 
 end

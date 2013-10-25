@@ -1,5 +1,5 @@
 task :default => :spec
 
 task :spec do
-  sh "ruby  test.rb"
+  sh "ruby  ./test/*"
 end
