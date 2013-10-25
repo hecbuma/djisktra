@@ -23,14 +23,19 @@ describe Graph do
     end
   end
 
-  describe :add_neighbor do
+  describe :add_route do
     before do
       @graph.add_node(Node.new('A'))
       @graph.add_node(Node.new('B'))
-      @graph.add_neighbor('A', 'B')
+      @graph.add_route('A', 'B', 7)
     end
     it "should add a neighbor to a specific node" do
       @graph['A'].list_neighbors.must_include 'B'
+    end
+    it "should add an array with the nodes plus distance" do
+      @graph.routes.first.must_include @graph['A']
+      @graph.routes.first.must_include @graph['B']
+      @graph.routes.first.must_include 7
     end
   end
 end

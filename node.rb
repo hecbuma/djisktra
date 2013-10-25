@@ -1,5 +1,5 @@
 class Node
-  attr_accessor :name, :neighbors
+  attr_accessor :name, :neighbors, :tentative_distance
 
   def initialize(name)
     @name = name
@@ -13,5 +13,7 @@ class Node
   def list_neighbors
     @neighbors.map(&:name)
   end
+
+
 
 end
