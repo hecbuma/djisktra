@@ -3,7 +3,7 @@ class Graph
 
   def initialize
     @nodes = {}
-    @routes = []
+    @routes = {}
   end
 
   def add_node(node)
@@ -12,7 +12,8 @@ class Graph
 
   def add_route(node_a, node_b, distance)
    @nodes[node_a].add_neighbor(@nodes[node_b])
-   @routes << [@nodes[node_a], @nodes[node_b], distance]
+   route = "#{node_a}#{node_b}"
+   @routes[route] = distance
    # @nodes[node_b].add_neighbor(@nodes[node_a])
   end
 
