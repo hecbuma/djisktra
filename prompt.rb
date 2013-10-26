@@ -3,13 +3,17 @@ require './engine'
 class Prompt
 
   def initialize
+
     @engine = Engine.new
   end
 
   def start
-    # @engine.ask_for_nodes
-    # @engine.ask_for_routes
-    @engine.auto
+    unless ENV['TYPE'] == 'auto'
+      @engine.ask_for_nodes
+      @engine.ask_for_routes
+    else
+      @engine.auto
+    end
     @engine.select_points
     @engine.phase_1
     @engine.phase_2
