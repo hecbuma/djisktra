@@ -1,0 +1,47 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+  %head
+    %title Myapp
+    %link(rel="stylesheet" href="/stylesheets/bootstrap.min.css")
+    %link(rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css")
+  %body{screen_capture_injected: "true"}
+    .container
+      .header
+        %h3.text-muted Djisktra
+      .jumbotron
+        %h2 Web Interface for Djisktra algorithm
+        %p.lead Enter the start point and end point
+        %form.form-inline{role: "form", action: '/process', method:"post"}
+          .form-group
+            %label.sr-only{for: "start-point"} Start point
+            %input#start-point.form-control{placeholder: "start point", type: "text", name: "start"}/
+          .form-group
+            %label.sr-only{for: "end-point"} End point
+            %input#end-point.form-control{placeholder: "end point", type: "text", name: "end"}/
+          %p
+            %button.btn.btn-lg.btn-success{type: "submit"} Start
+        #message
+
+    %script{src: "http://code.jquery.com/jquery-2.0.3.min.js"}
+    :javascript
+      $(function() {
+        $("form").submit(function(e){
+          e.preventDefault();
+
+          $.ajax({
+            type: "POST",
+            url: "/process",
+            data: $('form').serialize(),
+            success: function(data){
+              console.log(data);
+              $("#message").html("<h3>Done!</h3>"+"<p>"+data+"</p>");
+              $("#message").addClass('alert').addClass('alert-success');
+            },
+            error: function(){
+              console.log(data);
+              $("#message").html("Not Successful");
+            }
+          });
+        });
+      });
+

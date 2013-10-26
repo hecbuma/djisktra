@@ -1,6 +1,6 @@
 require "./graph"
 require "./node"
-require 'pry'
+
 
 
 class Engine

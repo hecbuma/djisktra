@@ -14,7 +14,6 @@ class Graph
    @nodes[node_a].add_neighbor(@nodes[node_b])
    route = "#{node_a}#{node_b}"
    @routes[route] = distance
-   # @nodes[node_b].add_neighbor(@nodes[node_a])
   end
 
   def [](name)
