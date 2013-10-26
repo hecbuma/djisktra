@@ -32,10 +32,8 @@ describe Graph do
     it "should add a neighbor to a specific node" do
       @graph['A'].list_neighbors.must_include 'B'
     end
-    it "should add an array with the nodes plus distance" do
-      @graph.routes.first.must_include @graph['A']
-      @graph.routes.first.must_include @graph['B']
-      @graph.routes.first.must_include 7
+    it "should create a route with the names the nodes plus the distance" do
+      @graph.routes['AB'].must_equal 7
     end
   end
 end
